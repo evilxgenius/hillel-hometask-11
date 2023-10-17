@@ -31,11 +31,9 @@ function productOfElementsOf(array) {
 }
 
 function nullifyArray(array, ...except) {
-    for (let i = 0; i < array.length; i++) {
-        if (!except.includes(array[i])) array[i] = 0;
-    }
-
-    return array;
+    return array.map(num => {
+        return (except.includes(num) ? num : 0);
+    })
 }
 
 (() => {
@@ -48,7 +46,7 @@ function nullifyArray(array, ...except) {
     const maxElement = maxElementOf(initArray);
     const separator = '\n------------';
 
-    console.log('initial array:', initArray, separator);
+    console.log('initial array:', '[', initArray.toString(), ']', separator);
 
     // - Знайти суму та кількість позитивних елементів.
     console.log('Sum of positive elements ->', sumOfElementsOf(positiveElements));
@@ -87,5 +85,5 @@ function nullifyArray(array, ...except) {
     console.log('Product of positive elements ->', BigInt(productOfElementsOf(positiveElements)), separator);
 
     // - Знайти найбільший серед елементів масиву, остальні обнулити.
-    console.log('We keep only max element of array. Modified array ->', nullifyArray(initArray, maxElement));
+    console.log('We keep only max element of array ->', '[',  nullifyArray(initArray, maxElement).toString(), ']');
 })();
