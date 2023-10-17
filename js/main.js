@@ -31,9 +31,7 @@ function productOfElementsOf(array) {
 }
 
 function nullifyArray(array, ...except) {
-    return array.map(num => {
-        return (except.includes(num) ? num : 0);
-    })
+    return array.map(num => except.includes(num) ? num : 0);
 }
 
 (() => {
